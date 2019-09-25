@@ -48,12 +48,6 @@ function logData(req) {
     console.log("originalUrl: " + req.originalUrl);
 }
 
-
-// Deps
-const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
-var util = require('util');
-var http = require('https');
-
 // Custom Hello World Activity Routes
 router.post('/journeybuilder/save/', function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
