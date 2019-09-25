@@ -30,6 +30,8 @@ app.use('/activity', activityRouter);
 var configjson  = require('./public/config.json');
 app.get( '/config.json', function( req, res ) {
   
+  console.log("Loading and modify config.json");
+
   var activityName = 'ACTIVITY_NAME';
   //Clone the config.json file
   var json = JSON.parse(JSON.stringify(configjson));
