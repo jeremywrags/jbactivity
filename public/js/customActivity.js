@@ -75,7 +75,7 @@ define([
         }];
         
         payload['metaData'].isConfigured = true;        
-        payload.Name = 
+        payload.Name = "Test";
         console.log(payload);
         connection.trigger('updateActivity', payload);
     }
