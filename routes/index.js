@@ -1,18 +1,30 @@
 var express = require('express');
 var router = express.Router();
 const dotenv = require('dotenv');
+const fs = require('fs');
 
 dotenv.config();
 
+//Load the Config.json and default index type files
+var configjson  = require('../public/config/config.json');
+
+var json = JSON.parse(JSON.stringify(configjson));
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {      
+  if(json.metaData.index == "")
+  {
+    var html = fs.readFileSync('./public/default/Wizard.html', 'utf8')
+    res.send(html);
+  }
   if (!req.session.token) {
     res.render('index', {
       title: 'Unauthenticated',
       errorMessage: 'This app may only be loaded via Salesforce Marketing Cloud',
     });
-  } else {
+  } 
+  else
+  {
     res.render('index', {
       title: 'Journey Builder Activity',
       results: activity.logExecuteData,
@@ -20,15 +32,11 @@ router.get('/', function(req, res, next) {
   }
 });
 
-//Load the Config.json file
-var configjson  = require('../public/config/config.json');
+
+
 router.get( '/config.json', function( req, res ) {
   
-  console.log(`Your name is ${process.env.ACTIVITY_NAME}`); // 8626
-
-  var activityName = 'ACTIVITY_NAME';
-  //Clone the config.json file
-  var json = JSON.parse(JSON.stringify(configjson));
+  //Clone the config.json file and update values from the env variables  
 	json.lang['en-US'].name = process.env.ACTIVITY_NAME;
   
   //send the updated JSON
