@@ -3,8 +3,7 @@
     "metaData": {
         "icon": "/images/icon.png",
         "iconSmall": "/images/iconSmall.png",
-        "category": "message",
-        "index": ""
+        "category": "message"        
     },
     "type": "REST",
     "lang": {

@@ -12,11 +12,6 @@ var json = JSON.parse(JSON.stringify(configjson));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {      
-  if(json.metaData.index == "")
-  {
-    var html = fs.readFileSync('./public/default/Wizard.html', 'utf8')
-    res.send(html);
-  }
   if (!req.session.token) {
     res.render('index', {
       title: 'Unauthenticated',
@@ -31,8 +26,6 @@ router.get('/', function(req, res, next) {
     });
   }
 });
-
-
 
 router.get( '/config.json', function( req, res ) {
   
