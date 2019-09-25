@@ -74,8 +74,8 @@ define([
             "emailAddress": "{{Contact.Attribute.PostcardJourney.EmailAddress}}"
         }];
         
-        payload['metaData'].isConfigured = true;        
-        payload.Name = "Test";
+        payload['metaData'].isConfigured = true;
+
         console.log(payload);
         connection.trigger('updateActivity', payload);
     }
